@@ -8,7 +8,7 @@
 # Version: 0.1.5
 # ----------------------
 
-export DEPLOYMENT_TEMP='C:\Temp'
+# export DEPLOYMENT_TEMP='C:\Temp'
 export TMP='C:\Temp'
 export TEMP='C:\Temp'
 
