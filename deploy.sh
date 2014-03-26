@@ -11,6 +11,7 @@
 export _CSRUN_STATE_DIRECTORY='C:\A'
 export TMP='C:\Temp'
 export TEMP='C:\Temp'
+export DEPLOYMENT_TEMP='C:\B'
 
 # Helpers
 # -------
