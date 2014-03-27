@@ -3,6 +3,17 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options:{
+                separator:';'
+              },
+      appjs:{
+             src: ['public/**/**/*.js', ],
+             dest: 'public/client/concat.js'
+            },
+      libjs: {
+            src: ['public/lib/**/*.js'],
+            dest: 'public/lib/libconcat.js'
+      },
     },
 
     mochaTest: {
@@ -21,14 +32,20 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-    },
+        dist: {
+          'public/client/concat.min.js':'public/client/concat.js',
+          'public/lib/lib.min.js': 'public/lib/libconcat.js' ,
+          'public/style.min.css':'public/style.css' 
+          }
+        },
 
     jshint: {
-      files: [
+      all: [
         // Add filespec list here
+        'Gruntfile.js', 'public/**/**/*.js'
       ],
       options: {
-        force: 'true',
+        //force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
@@ -89,12 +106,11 @@ module.exports = function(grunt) {
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
-  grunt.registerTask('test', [
-    'mochaTest'
-  ]);
+  grunt.registerTask('default', [ 'concat', 'uglify' ]);
 
-  grunt.registerTask('build', [
-  ]);
+  grunt.registerTask('test', [ 'mochaTest' ]);
+
+  grunt.registerTask('build', [ ]);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
